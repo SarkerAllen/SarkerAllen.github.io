@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Kevin&#39;s Blog">
 <meta property="og:description" content="** JavaWeb中的upload** &amp;lt;Excerpt in index | 首页摘要&amp;gt;    一个人如果活着没有梦想,那和咸鱼有什么区别?">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-17T02:24:48.682Z">
+<meta property="og:updated_time" content="2019-07-17T02:27:45.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaWeb-Upload">
 <meta name="twitter:description" content="** JavaWeb中的upload** &amp;lt;Excerpt in index | 首页摘要&amp;gt;    一个人如果活着没有梦想,那和咸鱼有什么区别?">
@@ -341,11 +341,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DiskFileItemFactory</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DiskFileItemFactory</span><span class="params">(<span class="keyword">int</span> sizeThreshold, File repository)</span></span></span><br></pre></td></tr></table></figure>
 
 <p>sizeThreshold:服务器内存，资源有限<br>限制：sizeThreshold临界值，600KB 上传的文件，如果小于600KB，则把接受到的整个文件放在内存中，程序直接从内存中读取，如果文件大于600KB，则把传过来的文件分成很多部分放在磁盘上的某个零时文件夹，程序需要文件时就去内存和临时文件夹里的临时文件中去读取<br>repository：配置临时文件夹的位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setSizeThreshold</span><span class="params">(<span class="keyword">int</span> sizeThreshold)</span></span></span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ol>
-   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setSizeThreshold</span><span class="params">(<span class="keyword">int</span> sizeThreshold)</span></span></span><br></pre></td></tr></table></figure>
-
-<p>   Apache文件上传组件在解析上传数据中的每个字段内容时，需要临时保存解析出的数据，以便在后面进行数据的进一步处理(保存在磁盘特定位置或插入数据库)。因为Java虚拟机默认可以使用的内存空间时有限的，超出限制时将会抛出“java.lang.OutOfMemoryError”错误。如果上传的文件很大，例如800M的文件，在内存中将无法临时保存该文件内容，Apache文件上传组件转而采用临时文件来保存这些数据；但如果上传文件的问价很小，例如600个子节的文件，显然将其直接保存在内存中性能会更好一些<br>       //sizeSizeThreshold方法用于设置是否将上传文件以临时问价的形式保存在磁盘的临界值(以子节为单位的int值)，如果从没有调用该方法设置此临界值，将会采用系统的默认值10KB。对应的getSizeThreshold()方法来获取此临界值</p>
+<p>   Apache文件上传组件在解析上传数据中的每个字段内容时，需要临时保存解析出的数据，以便在后面进行数据的进一步处理(保存在磁盘特定位置或插入数据库)。因为Java虚拟机默认可以使用的内存空间时有限的，超出限制时将会抛出“java.lang.OutOfMemoryError”错误。如果上传的文件很大，例如800M的文件，在内存中将无法临时保存该文件内容，Apache文件上传组件转而采用临时文件来保存这些数据；但如果上传文件的问价很小，例如600个子节的文件，显然将其直接保存在内存中性能会更好一些<br>    sizeSizeThreshold方法用于设置是否将上传文件以临时问价的形式保存在磁盘的临界值(以子节为单位的int值)，如果从没有调用该方法设置此临界值，将会采用系统的默认值10KB。对应的getSizeThreshold()方法来获取此临界值</p>
    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setRepository</span><span class="params">(File repository)</span></span></span><br></pre></td></tr></table></figure>
 
 <p>   setRepositoryPath方法用于设置当上传文件尺寸大于setSizeThreshold方法设置的临界值时，将文件以临时文件形式保存在磁盘上的存放目录。有一个对应的获得临时文件夹的File getRespository()方法</p>
@@ -437,7 +438,7 @@
         <p><span>本文标题:</span><a  href="/2019/07/14/JavaWeb-upload/">JavaWeb-Upload</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Kevin 的个人博客">Kevin</a></p>
         <p><span>发布时间:</span>2019年07月14日 - 22时07分</p>
-        <p><span>最后更新:</span>2019年07月17日 - 10时24分</p>
+        <p><span>最后更新:</span>2019年07月17日 - 10时27分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/07/14/JavaWeb-upload/" title="JavaWeb-Upload">https://SarkerAllen.github.io/2019/07/14/JavaWeb-upload/</a>
             <span class="copy-path" data-clipboard-text="原文: https://SarkerAllen.github.io/2019/07/14/JavaWeb-upload/　　作者: Kevin" title=""></span>
@@ -461,8 +462,8 @@
     </a>
   
   
-    <a  href="/2019/05/13/LeetCode_709/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode算法实现——709</div>
+    <a  href="/2019/05/13/LeetCode_938/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode——938算法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -553,12 +554,12 @@
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2019/05/13/LeetCode_709/" title="下一篇: LeetCode算法实现——709">
+            <a  href="/2019/05/13/LeetCode_938/" title="下一篇: LeetCode——938算法">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/16/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/JavaWeb-upload/">JavaWeb-Upload</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_709/">LeetCode算法实现——709</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_804/">LeetCode_804_题目解答</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_938/">LeetCode——938算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_1021/">LeetCode算法实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_905/">LeetCode——题目905</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/java-date/">java和javascript日期详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_961/">LeetCode算法实现</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/16/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/JavaWeb-upload/">JavaWeb-Upload</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_938/">LeetCode——938算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_709/">LeetCode算法实现——709</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_1021/">LeetCode算法实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_905/">LeetCode——题目905</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_961/">LeetCode算法实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/LeetCode_804/">LeetCode_804_题目解答</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/13/java-date/">java和javascript日期详解</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
