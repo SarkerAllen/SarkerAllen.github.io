@@ -60,6 +60,28 @@
   </entry>
   
   <entry>
+    <title>LeetCode算法实现——709</title>
+    <link href="https://SarkerAllen.github.io/2019/05/13/LeetCode_709/"/>
+    <id>https://SarkerAllen.github.io/2019/05/13/LeetCode_709/</id>
+    <published>2019-05-13T13:48:00.000Z</published>
+    <updated>2019-07-16T10:43:23.521Z</updated>
+    
+    <content type="html"><![CDATA[<p>** LeetCode——709** &lt;Excerpt in index | 首页摘要&gt;<br>    LeetCode——709算法C语言与Java语言实现</p><a id="more"></a><p>&lt;The rest of contents | 余下全文&gt;</p><h2 id="LeetCode-709-To-Lower-Case"><a href="#LeetCode-709-To-Lower-Case" class="headerlink" title="LeetCode_709_To Lower Case"></a>LeetCode_709_To Lower Case</h2><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><pre><code>1.获取传入参数(字符数组)2.将字符串拆分为字符数组3.判断字母是否为大写4.根据大小写之间ASCII值的关系进行转换5.返回改变后的字符</code></pre><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">toLowerCase</span><span class="params">(<span class="keyword">char</span> * str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *p = str;</span><br><span class="line">    <span class="keyword">while</span>(*p != <span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(*p &gt;= <span class="string">'A'</span> &amp;&amp; *p &lt;= <span class="string">'Z'</span>)&#123;</span><br><span class="line">            *P += <span class="number">32</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        *p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> str.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;** LeetCode——709** &amp;lt;Excerpt in index | 首页摘要&amp;gt;&lt;br&gt;    LeetCode——709算法C语言与Java语言实现&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="algorithm" scheme="https://SarkerAllen.github.io/categories/algorithm/"/>
+    
+    
+      <category term="java" scheme="https://SarkerAllen.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode算法实现</title>
     <link href="https://SarkerAllen.github.io/2019/05/13/LeetCode_1021/"/>
     <id>https://SarkerAllen.github.io/2019/05/13/LeetCode_1021/</id>
@@ -104,50 +126,6 @@
   </entry>
   
   <entry>
-    <title>LeetCode算法实现——709</title>
-    <link href="https://SarkerAllen.github.io/2019/05/13/LeetCode_709/"/>
-    <id>https://SarkerAllen.github.io/2019/05/13/LeetCode_709/</id>
-    <published>2019-05-13T13:48:00.000Z</published>
-    <updated>2019-07-16T10:43:23.521Z</updated>
-    
-    <content type="html"><![CDATA[<p>** LeetCode——709** &lt;Excerpt in index | 首页摘要&gt;<br>    LeetCode——709算法C语言与Java语言实现</p><a id="more"></a><p>&lt;The rest of contents | 余下全文&gt;</p><h2 id="LeetCode-709-To-Lower-Case"><a href="#LeetCode-709-To-Lower-Case" class="headerlink" title="LeetCode_709_To Lower Case"></a>LeetCode_709_To Lower Case</h2><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><pre><code>1.获取传入参数(字符数组)2.将字符串拆分为字符数组3.判断字母是否为大写4.根据大小写之间ASCII值的关系进行转换5.返回改变后的字符</code></pre><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">toLowerCase</span><span class="params">(<span class="keyword">char</span> * str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *p = str;</span><br><span class="line">    <span class="keyword">while</span>(*p != <span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(*p &gt;= <span class="string">'A'</span> &amp;&amp; *p &lt;= <span class="string">'Z'</span>)&#123;</span><br><span class="line">            *P += <span class="number">32</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        *p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> str.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;** LeetCode——709** &amp;lt;Excerpt in index | 首页摘要&amp;gt;&lt;br&gt;    LeetCode——709算法C语言与Java语言实现&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="algorithm" scheme="https://SarkerAllen.github.io/categories/algorithm/"/>
-    
-    
-      <category term="java" scheme="https://SarkerAllen.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode算法实现</title>
-    <link href="https://SarkerAllen.github.io/2019/05/13/LeetCode_961/"/>
-    <id>https://SarkerAllen.github.io/2019/05/13/LeetCode_961/</id>
-    <published>2019-05-13T13:48:00.000Z</published>
-    <updated>2019-07-16T10:43:57.416Z</updated>
-    
-    <content type="html"><![CDATA[<p>** LeetCode算法实现** &lt;Excerpt in index | 首页摘要&gt;<br>    LeetCode——961算法实现之C语言</p><a id="more"></a><p>&lt;The rest of contents | 余下全文&gt;</p><h2 id="LeetCode-961-N-Repeated-Element-in-Size-2N-Array"><a href="#LeetCode-961-N-Repeated-Element-in-Size-2N-Array" class="headerlink" title="LeetCode_961_N-Repeated Element in Size 2N Array"></a>LeetCode_961_N-Repeated Element in Size 2N Array</h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><pre><code>在2n大小的数组a中，有n+1个唯一元素，其中一个元素重复n次。</code></pre><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><pre><code>从数组的第三个元素开始，逐个与第1、2个元素比较，如果相等返回相等的值</code></pre><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><pre><code>1.定义三个变量，将数组的前三个元素分别赋给三个变量2.判断数组的长度是否为4并且第一个元素与第四个元素相等3.判断第一个元素与第二个或与第三个是否相等4.判断第二个元素与第三个元素是否相等5.将数组新元素重新赋给变量，重复3、4</code></pre><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>* A, <span class="keyword">int</span> ASize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; ASize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] == A[i - <span class="number">1</span>] || A[i] == A[i - <span class="number">2</span>])</span><br><span class="line">            <span class="keyword">return</span> A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Java语言"><a href="#Java语言" class="headerlink" title="Java语言"></a>Java语言</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = A[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> b = A[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> c = A[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">if</span>(A.length == <span class="number">4</span> &amp;&amp; a == A[<span class="number">3</span>])</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a == b || a == c)</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        <span class="keyword">if</span>(b == c)</span><br><span class="line">            <span class="keyword">return</span> b;</span><br><span class="line">        a = b;</span><br><span class="line">        b = c;</span><br><span class="line">        c = A[i];</span><br><span class="line">        i++;</span><br><span class="line">    &#125;<span class="keyword">while</span>(i &lt;= A.length);</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;** LeetCode算法实现** &amp;lt;Excerpt in index | 首页摘要&amp;gt;&lt;br&gt;    LeetCode——961算法实现之C语言&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="algorithm" scheme="https://SarkerAllen.github.io/categories/algorithm/"/>
-    
-    
-      <category term="java" scheme="https://SarkerAllen.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode——题目905</title>
     <link href="https://SarkerAllen.github.io/2019/05/13/LeetCode_905/"/>
     <id>https://SarkerAllen.github.io/2019/05/13/LeetCode_905/</id>
@@ -188,6 +166,28 @@
     
     
       <category term="C" scheme="https://SarkerAllen.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode算法实现</title>
+    <link href="https://SarkerAllen.github.io/2019/05/13/LeetCode_961/"/>
+    <id>https://SarkerAllen.github.io/2019/05/13/LeetCode_961/</id>
+    <published>2019-05-13T13:48:00.000Z</published>
+    <updated>2019-07-16T10:43:57.416Z</updated>
+    
+    <content type="html"><![CDATA[<p>** LeetCode算法实现** &lt;Excerpt in index | 首页摘要&gt;<br>    LeetCode——961算法实现之C语言</p><a id="more"></a><p>&lt;The rest of contents | 余下全文&gt;</p><h2 id="LeetCode-961-N-Repeated-Element-in-Size-2N-Array"><a href="#LeetCode-961-N-Repeated-Element-in-Size-2N-Array" class="headerlink" title="LeetCode_961_N-Repeated Element in Size 2N Array"></a>LeetCode_961_N-Repeated Element in Size 2N Array</h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><pre><code>在2n大小的数组a中，有n+1个唯一元素，其中一个元素重复n次。</code></pre><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><pre><code>从数组的第三个元素开始，逐个与第1、2个元素比较，如果相等返回相等的值</code></pre><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><pre><code>1.定义三个变量，将数组的前三个元素分别赋给三个变量2.判断数组的长度是否为4并且第一个元素与第四个元素相等3.判断第一个元素与第二个或与第三个是否相等4.判断第二个元素与第三个元素是否相等5.将数组新元素重新赋给变量，重复3、4</code></pre><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>* A, <span class="keyword">int</span> ASize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; ASize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] == A[i - <span class="number">1</span>] || A[i] == A[i - <span class="number">2</span>])</span><br><span class="line">            <span class="keyword">return</span> A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Java语言"><a href="#Java语言" class="headerlink" title="Java语言"></a>Java语言</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = A[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> b = A[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> c = A[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">if</span>(A.length == <span class="number">4</span> &amp;&amp; a == A[<span class="number">3</span>])</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a == b || a == c)</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        <span class="keyword">if</span>(b == c)</span><br><span class="line">            <span class="keyword">return</span> b;</span><br><span class="line">        a = b;</span><br><span class="line">        b = c;</span><br><span class="line">        c = A[i];</span><br><span class="line">        i++;</span><br><span class="line">    &#125;<span class="keyword">while</span>(i &lt;= A.length);</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;** LeetCode算法实现** &amp;lt;Excerpt in index | 首页摘要&amp;gt;&lt;br&gt;    LeetCode——961算法实现之C语言&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="algorithm" scheme="https://SarkerAllen.github.io/categories/algorithm/"/>
+    
+    
+      <category term="java" scheme="https://SarkerAllen.github.io/tags/java/"/>
     
   </entry>
   
