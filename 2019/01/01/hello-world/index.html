@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>java和javascript日期详解 | Kevin&#39;s Blog</title>
+  <title>Hello World | Kevin&#39;s Blog</title>
   
   <meta name="keywords" content="编程 技术 计算机 java">
   
@@ -260,8 +260,8 @@
         
   
     <h1 class="title">
-      <a href="/2019/05/13/java-date/">
-        java和javascript日期详解
+      <a href="/2019/01/01/hello-world/">
+        Hello World
       </a>
     </h1>
   
@@ -290,7 +290,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-13</p>
+    <p>2019-01-01</p>
   </a>
 </div>
 
@@ -298,14 +298,6 @@
         
           
             
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/language/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>language</p>
-    </a>
-  </div>
-
 
           
         
@@ -342,45 +334,19 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <p>** java，js日期转换：** &lt;Excerpt in index | 首页摘要&gt;<br>    java的各种日期转换</p>
-<a id="more"></a>
-<p>&lt;The rest of contents | 余下全文&gt;</p>
-<h2 id="日期表示类型"><a href="#日期表示类型" class="headerlink" title="日期表示类型"></a>日期表示类型</h2><ol>
-<li><p>获取long类型的日期格式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> time = System.currentTimeMillis();</span><br><span class="line">System.out.printf(time+<span class="string">""</span>);</span><br><span class="line">Date date =<span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(date.getTime());</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取制定格式的日期</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd hh:mm:ss"</span>);</span><br><span class="line">Date date =<span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(sdf.format(date) );</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把制定格式的日期转为date或者毫秒值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd hh:mm:ss"</span>);</span><br><span class="line">Date date = sdf.parse(<span class="string">"2016-05-22 10:15:21"</span>);</span><br><span class="line"><span class="keyword">long</span> mills = date.getTime();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ul>
-<li>说明:System.currentTimeMillis()并不能精确到1ms的级别,它取决于运行的系统,你再windows,mac,linux精确的范围都有差异,对于有高精度时间的要求,不能使用这个</li>
-</ul>
-<h2 id="日期计算"><a href="#日期计算" class="headerlink" title="日期计算"></a>日期计算</h2><ol>
-<li>最方便的方式是将时间转为毫秒值进行计算<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Date from =<span class="keyword">new</span> Date();</span><br><span class="line">Thread.sleep(<span class="number">200</span>);<span class="comment">//线程休眠2ms</span></span><br><span class="line">Date to =<span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(to.getTime()-from.getTime());</span><br></pre></td></tr></table></figure>
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<h2 id="高精度时间"><a href="#高精度时间" class="headerlink" title="高精度时间"></a>高精度时间</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> time1 =System.nanoTime();</span><br><span class="line">System.out.printf(time1+<span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>说明:System.nanoTime()提高了ns级别的精度,1ms=1000000ns,</li>
-</ul>
-<h2 id="javascript日期"><a href="#javascript日期" class="headerlink" title="javascript日期"></a>javascript日期</h2><ol>
-<li><p>获取时间的毫秒值，获取月份，时间</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myDate = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">myDate.getYear(); <span class="comment">//获取当前年份(2位)</span></span><br><span class="line">myDate.getFullYear(); <span class="comment">//获取完整的年份(4位,1970-????)</span></span><br><span class="line">myDate.getMonth(); <span class="comment">//获取当前月份(0-11,0代表1月)</span></span><br><span class="line">myDate.getDate(); <span class="comment">//获取当前日(1-31)</span></span><br><span class="line">myDate.getDay(); <span class="comment">//获取当前星期X(0-6,0代表星期天)</span></span><br><span class="line">myDate.getTime(); <span class="comment">//获取当前时间(从1970.1.1开始的毫秒数)</span></span><br><span class="line">myDate.getHours(); <span class="comment">//获取当前小时数(0-23)</span></span><br><span class="line">myDate.getMinutes(); <span class="comment">//获取当前分钟数(0-59)</span></span><br><span class="line">myDate.getSeconds(); <span class="comment">//获取当前秒数(0-59)</span></span><br><span class="line">myDate.getMilliseconds(); <span class="comment">//获取当前毫秒数(0-999)</span></span><br><span class="line">myDate.toLocaleDateString(); <span class="comment">//获取当前日期</span></span><br><span class="line"><span class="keyword">var</span> mytime=myDate.toLocaleTimeString(); <span class="comment">//获取当前时间</span></span><br><span class="line">myDate.toLocaleString( ); <span class="comment">//获取日期与时间</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>时间戳获取<br>注意，java，php等生成的时间戳是秒，不是毫秒，所以需要签名时间戳的时候，需要转为秒时间戳</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">var</span> timestamp = <span class="built_in">parseInt</span>(time.getTime()/<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>格式化时间</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取当前时间，格式YYYY-MM-DD</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getNowFormatDate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">var</span> seperator1 = <span class="string">"-"</span>;</span><br><span class="line">    <span class="keyword">var</span> year = date.getFullYear();</span><br><span class="line">    <span class="keyword">var</span> month = date.getMonth() + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> strDate = date.getDate();</span><br><span class="line">    <span class="keyword">if</span> (month &gt;= <span class="number">1</span> &amp;&amp; month &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">        month = <span class="string">"0"</span> + month;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (strDate &gt;= <span class="number">0</span> &amp;&amp; strDate &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">        strDate = <span class="string">"0"</span> + strDate;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> currentdate = year + seperator1 + month + seperator1 + strDate;</span><br><span class="line">    <span class="keyword">return</span> currentdate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
         </div>
         
@@ -392,10 +358,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-16T18:02:39+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-18T23:59:36+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 Jul 16, 2019</p>
+    <p>最后更新于 Jul 18, 2019</p>
   </a>
 </div>
 
@@ -403,9 +369,6 @@
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/java/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>java</p></a></div>
-
 
         
       
@@ -417,7 +380,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://SarkerAllen.github.io/2019/05/13/java-date/&title=java和javascript日期详解 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=** java，js日期转换：** &lt;Excerpt in index | 首页摘要&gt;    java的各种日期转换"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://SarkerAllen.github.io/2019/01/01/hello-world/&title=Hello World | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary="
           
           >
           
@@ -429,7 +392,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://SarkerAllen.github.io/2019/05/13/java-date/&title=java和javascript日期详解 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=** java，js日期转换：** &lt;Excerpt in index | 首页摘要&gt;    java的各种日期转换"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://SarkerAllen.github.io/2019/01/01/hello-world/&title=Hello World | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary="
           
           >
           
@@ -439,7 +402,7 @@
       
     
       
-        <a class='qrcode' rel="external nofollow noopener noreferrer" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aO3LEIBRE0dn/puXEqdDtRgqAq2iqbAFHAfV+vx9+ruEz/s9ul98XjwwZMpZlkCOSw4235+zxvrdnkCFDxgGM8bHuliZXLblA03dlyJAhgzB4bEauzm4vGTJkyCAX7vi4PPe8e1eGDBky0iSWh3rd5+CfTIYMGacx5o/y3e9P+hsyZMhYinGFTxyu4VCyO8//uzJkyNia0RXux0fvgsuZRoIMGTL2ZnRXbXr5kpZn+rHK0FCGDBkLMsii6RWchoYzJb+H2qEMGTK2YKQjETNJaVfgI59ShgwZZzLSMYg0iEyv3YckWYYMGVszuuCMFMvSEDNtLZR5uQwZMpZl8GCOB4tvXaD8E8iQIeMcxkxZn6yGDoTH0WTIkHEOI20Tdg3ONHyM01cZMmRsyuAls67FmA6B8RWC9FWGDBmLM7pBB14sIyunwehDhCtDhoztGOlQxbsNyzQkvU2hZciQsTUjLZPxA820ObvmhAwZMvZmdIUwnpqOd3khtpUhQ8ZhjPmUdQzmK6dFPRkyZJzAIBdit2WKL4fGZMiQcQCDX5TppUnAaaEN/UGGDBlbMK7w4TljFxSSFDces5AhQ8bijK5lmFK71Jf8jmEyZMhYljEzFsbBfB0SPsYBogwZMrZg8DZAFyy+FfahYQsZMmTIANFll7527U8ZMmTI6Ir+POjkYxwoiZUhQ8bWDD42McPmweKH5TYZMmQsyOhGHAjprWGLdOxDhgwZGzH+APmriYdQg1/FAAAAAElFTkSuQmCC'>
+        <a class='qrcode' rel="external nofollow noopener noreferrer" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvklEQVR42u3bQW4jMQwEQP//01lgTwE2ozRJ0d5DzSmwHXlKAURNU3m94uvr7/X0+vd3v/658nGeRn4a7dqFh4eH17r183DVG00+n4xwvp9oCvDw8PDWeOfF+vwFyZp8HjMZ/zzdj6/j4eHhfZSXLPH5xjeZrLxQ4eHh4f2fvKQM3NqCV8fHw8PDez+vusG9NTXV0GExa8HDw8OLeb3t72d/Xuzv4eHh4Q266tWAtVdI8nHKd4uHh4e3wOsFB3nwOv9krz32ymcUDw8Pr8jLW/u96chbWSvlBw8PD2+NV72Jydrb2zTn5eSHJwY8PDy8NV5OOpeH3qTkhaRwEAEPDw9vgdc79tTbEPcOcpWPWM1PdeHh4eEdfzdfoKvb6OoiPvr75DEuHh4e3iVeuWNWbOpXC8wk/niMcfHw8PCu8vIjVpP4Nb/pyZiPMQQeHh7eJV51G92LMHphRHW6y+kLHh4e3oBXPfbU2/LOI4nmAwAeHh7eAq/asO9teXuNtF5wjIeHh/ceXh409Npak4BjUsDw8PDw7vLyxT2PKvLFvbdxT8rVK5ktPDw8vBavt8GthgXzptoo3sXDw8O7ypu0ryZBRi8QqYYjeHh4eNu8eQs/iVl7bbPqCQg8PDy8d/KSJla+4W42+FsF6cIJLzw8PLwxr8qoTtMEXJ4VPDw8vDVe8sWTBlVCrR44aD4x4OHh4fVX8gv/PlotMHnwMQky8PDw8DZ4vfB0fihq0h4rxBZ4eHh4y7y8DFSf+uflIT9SgIeHh7fNu9uCOscNSUmoHkG4FgTj4eHhFXnzuKE32uRgVmFbj4eHh7fG6x20es/reen64fN4eHh4H+WN+mzFbXFSfi4XBjw8PLw1Xh5P9Bb3Ki9qg+Hh4eEt8PL4oPduvk2vNsx+KSd4eHh4C7y7S3Y1OJi31i5ceHh4eCnvD7UKkpdPkvzLAAAAAElFTkSuQmCC'>
         
           <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
         
@@ -449,7 +412,7 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://SarkerAllen.github.io/2019/05/13/java-date/&title=java和javascript日期详解 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=** java，js日期转换：** &lt;Excerpt in index | 首页摘要&gt;    java的各种日期转换"
+          href="http://service.weibo.com/share/share.php?url=https://SarkerAllen.github.io/2019/01/01/hello-world/&title=Hello World | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary="
           
           >
           
@@ -477,9 +440,9 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                             <h4>
-                                <a href="/2019/05/13/LeetCode_961/" rel="prev" title="LeetCode算法实现">
+                                <a href="/2019/05/13/java-date/" rel="prev" title="java和javascript日期详解">
                                   
-                                      LeetCode算法实现
+                                      java和javascript日期详解
                                   
                                 </a>
                             </h4>
@@ -492,20 +455,6 @@
                         </span>
                     </section>
                 
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/01/01/hello-world/" rel="prev" title="Hello World">
-                                    
-                                        Hello World
-                                    
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
                 
             </div>
         
@@ -544,7 +493,7 @@
 
   <script>
     window.subData = {
-      title: 'java和javascript日期详解',
+      title: 'Hello World',
       tools: true
     }
   </script>
@@ -624,7 +573,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#日期表示类型"><span class="toc-text">日期表示类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期计算"><span class="toc-text">日期计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高精度时间"><span class="toc-text">高精度时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javascript日期"><span class="toc-text">javascript日期</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
     </div>
   </section>
 

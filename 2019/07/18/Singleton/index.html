@@ -353,13 +353,12 @@
 <li><p>私用自身的构造器，防止外界通过构造器创建新的对象</p>
 </li>
 <li><p>向外提供一个公共静态方法用于获取自身的对象</p>
-<p>代码实现:</p>
-<p>饿汉式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonDemo</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonDemo singleton = <span class="keyword">new</span> SingletonDemo();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonDemo</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonDemo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
-<p>懒汉式(存在线程不安全)</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h3><p>   饿汉式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonDemo</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonDemo singleton = <span class="keyword">new</span> SingletonDemo();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonDemo</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonDemo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        懒汉式(存在线程不安全)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonDemo</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonDemo singleton;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonDemo</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonDemo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(singleton == <span class="keyword">null</span>)&#123;</span><br><span class="line">            singleton = <span class="keyword">new</span> SingletonDemo();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="关于懒汉式单例模式线程安全的解决方案"><a href="#关于懒汉式单例模式线程安全的解决方案" class="headerlink" title="关于懒汉式单例模式线程安全的解决方案"></a>关于懒汉式单例模式线程安全的解决方案</h2><h3 id="双重检查锁"><a href="#双重检查锁" class="headerlink" title="双重检查锁"></a>双重检查锁</h3><p>可以使用“双重检查加锁”的方式来实现，就可以既实现线程安全，又能够使性能不受很大的影响。</p>
@@ -378,10 +377,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-18T23:54:11+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-19T00:00:37+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 Jul 18, 2019</p>
+    <p>最后更新于 Jul 19, 2019</p>
   </a>
 </div>
 
@@ -389,6 +388,9 @@
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/singleton/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>singleton</p></a></div>
+
 
         
       
@@ -461,12 +463,17 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/07/16/hello-world/" rel="prev" title="Hello World">
+                                <a href="/2019/07/14/JavaWeb-upload/" rel="prev" title="JavaWeb-Upload">
                                     
-                                        Hello World
+                                        JavaWeb-Upload
                                     
                                 </a>
                             </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/java/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>java</a>
+                                </h6>
                             
                         </span>
                     </section>
@@ -588,7 +595,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单例设计模式-浅谈"><span class="toc-text">单例设计模式(浅谈)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是设计模式-Design-Pattern"><span class="toc-text">什么是设计模式 (Design Pattern)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单例模式-Singleton-最常用的、最简单的设计模式"><span class="toc-text">单例模式 (Singleton) 最常用的、最简单的设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单例设计模式实现的步骤"><span class="toc-text">单例设计模式实现的步骤:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于懒汉式单例模式线程安全的解决方案"><span class="toc-text">关于懒汉式单例模式线程安全的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#双重检查锁"><span class="toc-text">双重检查锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么使双重检查加锁机制"><span class="toc-text">什么使双重检查加锁机制</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单例设计模式-浅谈"><span class="toc-text">单例设计模式(浅谈)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是设计模式-Design-Pattern"><span class="toc-text">什么是设计模式 (Design Pattern)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单例模式-Singleton-最常用的、最简单的设计模式"><span class="toc-text">单例模式 (Singleton) 最常用的、最简单的设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单例设计模式实现的步骤"><span class="toc-text">单例设计模式实现的步骤:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于懒汉式单例模式线程安全的解决方案"><span class="toc-text">关于懒汉式单例模式线程安全的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#双重检查锁"><span class="toc-text">双重检查锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么使双重检查加锁机制"><span class="toc-text">什么使双重检查加锁机制</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -732,7 +739,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a>
+      <a href="/tags/C/" style="font-size: 24px; color: #555">C</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/singleton/" style="font-size: 14px; color: #999">singleton</a>
     </div>
   </section>
 
