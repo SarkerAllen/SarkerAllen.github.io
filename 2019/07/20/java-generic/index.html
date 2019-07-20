@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>浅谈Java中的List、Set与Map集合 | Kevin&#39;s Blog</title>
+  <title>Java中的泛型 | Kevin&#39;s Blog</title>
   
   <meta name="keywords" content="编程 技术 计算机 java">
   
@@ -260,8 +260,8 @@
         
   
     <h1 class="title">
-      <a href="/2019/07/19/Java-List-Set-Map/">
-        浅谈Java中的List、Set与Map集合
+      <a href="/2019/07/20/java-generic/">
+        Java中的泛型
       </a>
     </h1>
   
@@ -290,7 +290,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-19</p>
+    <p>2019-07-20</p>
   </a>
 </div>
 
@@ -342,55 +342,67 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <p>*<em>浅谈Java中的List、Set与Map集合 *</em> &lt;Excerpt in index | 首页摘要&gt;<br>    Java中的List、Set与Map集合分析</p>
+          <p>*<em>浅谈Java中的泛型 *</em> &lt;Excerpt in index | 首页摘要&gt;<br>    Java中的泛型、泛型类、泛型方法</p>
 <a id="more"></a>
 <p>&lt;The rest of contents | 余下全文&gt;</p>
-<h2 id="接口继承关系以及实现"><a href="#接口继承关系以及实现" class="headerlink" title="接口继承关系以及实现"></a>接口继承关系以及实现</h2><p>集合类存放于Java.util包中，主要有3种：List、Set和Map。</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="为什么使用泛型"><a href="#为什么使用泛型" class="headerlink" title="为什么使用泛型"></a>为什么使用泛型</h3><ul>
+<li>存储在集合中的元素，取出来都是Object类型的，此时就得强转</li>
+<li>约束存储到集合中的元素必须是相同的数据类型</li>
+<li>设计一个点类，来封装坐标位置，要求坐标位置支持String支持integer支持double类型（重复设计）</li>
+</ul>
+<h3 id="泛型-Generic-Type"><a href="#泛型-Generic-Type" class="headerlink" title="泛型(Generic Type)"></a>泛型(Generic Type)</h3><p>从Java5开始支持的新语法</p>
+<h4 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h4><ul>
+<li>广泛通用的类型</li>
+<li>代码模板中类型不确定，谁调用该段代码，谁指明类型</li>
+</ul>
+<p>简单定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T x;</span><br><span class="line">    <span class="keyword">private</span> T y;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getX</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setX</span><span class="params">(T x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line">   	<span class="keyword">public</span> T getY&#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setY</span><span class="params">(T y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//泛型尖括号中可以使用T:Type E：Element K:Key V:Value</span></span><br><span class="line"><span class="comment">//具体是什么类型取决于调用者，不对泛型进行设置默认object</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[]args)</span></span>&#123;</span><br><span class="line">        Point&lt;String&gt; p1 = <span class="keyword">new</span> Point&lt;String&gt;();</span><br><span class="line">        Point&lt;Integer&gt; p2 = <span class="keyword">new</span> Point&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h4><p>直接在类/接口上定义的类型</p>
+<p>泛型类的子类继承泛型类是需要指定类型</p>
+<p>使用泛型：保证前后类型一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"><span class="comment">//该list只能存储String类型的元素</span></span><br></pre></td></tr></table></figure>
+
+<p>因为前后类型相同，所以Java7开始，推出了泛型的菱形语法&lt;&gt;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>泛型不存在继承的关系，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt;list = <span class="keyword">new</span> ArrayList&lt;String&gt;();<span class="comment">//错误的</span></span><br></pre></td></tr></table></figure>
+
+<p>从此以后，使用集合都得使用泛型来约束该集合中的元素的类型</p>
+<p>通过反编译发现：泛型也是语法糖，底层依然使用强制类型转换的方式实现</p>
+<h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><p>在方法上声明泛型</p>
 <ul>
-<li><p>Collection：Collection是集合List、Set、Queue的最基本的接口</p>
+<li>泛型类中的泛型只能适用于非静态方法，如果需要给静态方法设置泛型，此时使用泛型方法</li>
+<li>泛型类中的泛型应该适用于整个类中的多个方法，有时候支队某一个方法设置泛型即可</li>
+</ul>
+<p>一般的，把自定义的泛型作为该方法的返回类型才有意义，而且此时的泛型必须是由参数设置进来的，如果没有参数来设置泛型的具体类型，此时的方法一般返回设计为Object即可</p>
+<p>代码示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示在该方法中使用T来表示一种未知类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">Demo</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="泛型的通配符、上限和下限"><a href="#泛型的通配符、上限和下限" class="headerlink" title="泛型的通配符、上限和下限"></a>泛型的通配符、上限和下限</h3><ul>
+<li><p>泛型的通配符：不知道用什么类型来接收时，此时可以使用？，？表示未知通配符</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[]args)</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">(List&lt;?&gt;list)</span></span>&#123;</span><br><span class="line">        <span class="comment">//此时只能接收数据，不能添加数据至list</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Iterator：迭代器，可以通过迭代器遍历集合中的数据</p>
+<li><p>泛型的上限和下限：用来限定元素的类型必须时X类的子类或相同，X类的父类或相同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//泛型的上限：此时的泛型？必须时Numer类型或Number类的子类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">(List&lt;? extends Number&gt; list)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//泛型的下限：此时的泛型？必须时Number类型或Number类的父类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">(List&lt;? <span class="keyword">super</span> Number&gt;list)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p>Map：是映射表的基础接口</p>
+</ul>
+<h3 id="泛型的擦除和转换"><a href="#泛型的擦除和转换" class="headerlink" title="泛型的擦除和转换"></a>泛型的擦除和转换</h3><ul>
+<li><p>泛型的擦除：</p>
+<ol>
+<li><p>泛型编译之后就消失了(泛型的自动擦除)</p>
 </li>
-</ul>
-<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>Java的List是非常用的数据类型。List是有序的Collection。Java List一共三个类：分别是ArrayList、Vector和LinkedList。</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>ArrayList是最常用的List实现类，内部是通过数组实现的，它允许对元素进行快速随机访问。数组的缺点是每个元素之间不能有间隔，当数组大小不满足是需要增加存储能力，就要将已经有数组的数据复制到新的存储空间中。当从ArrayList的中间位置插入或者删除元素时，需要对数组进行复制、移动、代价比较高。因此，它适合随机查找和遍历，不适合插入和删除。</p>
-<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p>Vector与ArrayList一样，也是通过数组实现的，不同的是它支持线程的同步，即某一时刻只有一个线程能够写Vector，避免多线程同时写而引起的不一致性，但实现同步需要很高的花费，因此，访问它比访问ArrayList慢。</p>
-<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p>LinkedList是用链表结构存储数据的，很适合数据的动态插入和删除，随机访问和遍历速度比较慢。另外，它还提供了List接口中没有定义的方法，专门用于操作表头和表尾元素，可以当作堆栈、队列和双向队列使用。</p>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set注重独一无二的性质，该体系集合用于存储无序(存入和取出的顺序不一定相同)元素，值不能重复。对象的相等性本质是对象的hashCode值(Java是依据对象的内存地址计算出的次序号)判断的，如果想要让两个不同的对象视为相等的，就必须覆盖Object和hashCode方法的equals方法。Java Set一共三个实现类：分别是HashSet、TreeSet和LinkHashSet。</p>
-<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>哈希表里边存放的是哈希值。HashSet存储元素的顺序并不是按照存入时的顺序(与List显然不同)而是按照哈希值来存的所以取数据也是按照哈希值取得。元素的哈希值是通过元素的hashCode方法来获取的，HashSet首先判断两个元素的哈希值，如果哈希值一样，接着会比较equals方法，如果equals结果尾true，HashSet就视为同一个元素。如果equals为false就不是同一个元素。</p>
-<p>哈希值相同equals为false的元素是怎么存储呢，就是在同样的哈希值下顺延(可以认为哈希值相同的元素放在一个哈希桶中)。也就是哈希一样的存一列。HashSet通过hashCode值来确定元素在内存中的位置。一个hashCode位置可以存放多个元素。</p>
-<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><ul>
-<li>TreeSet()是使用二叉树的原理对add()的对象按照指定的顺序排序(升序、降序)，每增加一个对象都会进行排序，将对象插入的二叉树指定的位置</li>
-<li>Integer和String对象都可以进行默认的TreeSet排序，而自定义类的对象是不可以的，自定义的类必须实现Comparable接口，并且覆写相应的compareTo()方法，才可以正常使用。</li>
-<li>在覆写compareTo()方法时，要返回相应的值才能使TreeSet按照一定的规则来排序。</li>
-<li>比较此对象与指定对象的顺序。如果该对象小于、等于或大于指定对象，则分别返回负整数、零或正整数。</li>
-</ul>
-<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p>对于LinkedHashSet而言，它继承于HashSet、又基于LinkedHashMap来实现的。</p>
-<p>LinkedHashSet底层使用LinkedHashMap来保存所有元素，它继承于HashSet，其所有的方法操作上又与HashSet相同，因此LinkedHashSet的实现上非常简单，只提供了四个构造方法，并通过传递一个标识参数，调用父类的构造器，底层构造一个LinkedHashMap来实现，在相关操作上与父类HashSet的操作相同，直接调用父类HashSet的方法即可。</p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap根据键的hashCode值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。HashMap最多只允许一条记录的键为null，允许多条记录的值为null。HashMap非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用Collections的synchronizedMap方法是HashMap具有线程安全的能里，或者使用ConcurrentHashMap。</p>
-<h3 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h3><p>HashTable是遗留类，很多映射的常用功能与HashMap类似，不同的是它继承自Dictionary类，并且是线程安全的，任一时间只有一个线程能写HashTable，并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁。HashTable不建议在新代码中使用，不需要线程安全的场合可以用HashMap替换，需要线程安全的场合可以用ConcurrentHashMap替换。</p>
-<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>TreeMap实现SortedMap接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator遍历TreeMap时，得到的记录是有序的。如果使用排序的映射，建议使用TreeMap。</p>
-<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p>LinkedHashMap是HashMap的一个子类，保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录时先插入的，也可以在构造时带参数。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="三者的区别"><a href="#三者的区别" class="headerlink" title="三者的区别"></a>三者的区别</h3><ul>
-<li>List有序、可以重复，有三个实现类，ArrayList、LinkedList、Vector</li>
-<li>Set无序、不可重复，有两个实现类，HashSet、LinkedHashSet</li>
-<li>Map键不可以重复、值可以重复，有三个实现类，HashMap、HashTable、LinkedHashMap</li>
-</ul>
-<h3 id="List三个子类的区别"><a href="#List三个子类的区别" class="headerlink" title="List三个子类的区别"></a>List三个子类的区别</h3><ul>
-<li>ArrayList：底层使用Object[]数组实现，内存地址都是连续的便于索引，查询快；在新增的时候需要申请一块连续的内存空间，所以增删比较慢。</li>
-<li>LinkedList：底层是基于链表实现，链表内存是散乱的，在存储自身内存地址的同时，还存储着下一个元素的内存地址，所以查询慢，增删快。</li>
-<li>Vector：底层数组实现，由于所有的方法都是采用synchronize，线程安全，效率慢。</li>
-</ul>
-<h3 id="Map三个子类的区别"><a href="#Map三个子类的区别" class="headerlink" title="Map三个子类的区别"></a>Map三个子类的区别</h3><ul>
-<li>HashMap：基于hash表的Map接口实现，非线程安全，支持键null，值null</li>
-<li>HashTable：线程安全，不支持键null，值null</li>
-<li>LinkedHashMap：持两种排序，插入顺序和访问顺序。前者是指按照插入时的顺序排序，后者是指按照最旧使用到最近使用的顺序</li>
-</ul>
-<h3 id="Set两个子类的区别"><a href="#Set两个子类的区别" class="headerlink" title="Set两个子类的区别"></a>Set两个子类的区别</h3><ul>
-<li>HashSet：底层由HashMap实现</li>
-<li>LinkedHashSet：LinkedHashSet继承自HashSet，源码更少、更简单，唯一的区别时LinkedHashSet内部使用的时LinkHashMap。这样做的意义或者好处时LinkedHashSet中的元素顺序是可以保证的，也就是说遍历顺序和插入顺序是一致的。</li>
+<li><p>当把带有泛型的集合赋给不带泛型的集合，此时泛型被擦除(手动擦除)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[]args)</span></span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list1 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list1.add(<span class="number">1</span>);</span><br><span class="line">        List list2 = <span class="keyword">null</span>;</span><br><span class="line">        list2 = list1;<span class="comment">//此时泛型擦除</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>堆污染：</p>
+<p>当一个方法既使用泛型的时候也使用可变参数，此时容易导致堆污染问题。</p>
+<p>如：在Arrays类中的 <strong>asList()</strong> 方法</p>
+</li>
 </ul>
 
         </div>
@@ -403,7 +415,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-20T11:49:30+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-20T15:53:05+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>last updated at Jul 20, 2019</p>
@@ -428,7 +440,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://SarkerAllen.github.io/2019/07/19/Java-List-Set-Map/&title=浅谈Java中的List、Set与Map集合 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=*浅谈Java中的List、Set与Map集合 * &lt;Excerpt in index | 首页摘要&gt;    Java中的List、Set与Map集合分析"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://SarkerAllen.github.io/2019/07/20/java-generic/&title=Java中的泛型 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=*浅谈Java中的泛型 * &lt;Excerpt in index | 首页摘要&gt;    Java中的泛型、泛型类、泛型方法"
           
           >
           
@@ -440,7 +452,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://SarkerAllen.github.io/2019/07/19/Java-List-Set-Map/&title=浅谈Java中的List、Set与Map集合 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=*浅谈Java中的List、Set与Map集合 * &lt;Excerpt in index | 首页摘要&gt;    Java中的List、Set与Map集合分析"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://SarkerAllen.github.io/2019/07/20/java-generic/&title=Java中的泛型 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=*浅谈Java中的泛型 * &lt;Excerpt in index | 首页摘要&gt;    Java中的泛型、泛型类、泛型方法"
           
           >
           
@@ -450,7 +462,7 @@
       
     
       
-        <a class='qrcode' rel="external nofollow noopener noreferrer" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aQW4jMQwEwPz/08kDFh53k1LiBWpOhg1bU3MQ6aa+vuLr+8WVfCt/59/X7YrDCw8PD+/Qrb9a7NW3ZqRnZL76y0eAh4eHd433vK0/L5l8+rytzx5uUorw8PDwPoGXbNx5r5v8Ah4eHt7/zkva3KSBfr7p5FM8PDy8v+UlTW0eJRy4rbiQHMta8PDw8GLerP3929dX5nt4eHh466n6vvHNI93ZL7y5Wzw8PLwLvLadTcLWNm7IG+v2PvHw8PBu827EB7PoNh+qRfeMh4eHd5SXx6BtbHr2wGs7SCt6eTw8PLw1L2+g2wFYexR1VqheVjw8PDy8y7z2AFa+WbdN86qtx8PDw7vAy8dL+wH/qZC3PnqFh4eHd5TXbrj5kmcLRlu6hvUEDw8Pr+TNNv19ZDCLKqIwGg8PD+8Cr93cN6UiB+Sr1IkLHh4e3pqXxAH5lTfH+wcRNeh4eHh4F3j55r7ZptsIYxYEvykPeHh4eL/Cyw9mnYpf88MEBRIPDw/v13nPC9dDqdG6bTGLWmo8PDy8Q7xNGNEGFm1UMTywhYeHh3eBtw8R2uMFs+a7HcXh4eHh3eNtQtUk8L1xmCAPnfHw8PDO8vIf2gz1owNSi5r25r8CHh4e3lFeHpgmC+TlIS8q7cCsGIPh4eHhLXjJcGt2cKqNZU+Vh+jZ4+Hh4R3itcOq2bgrj3r3BQYPDw/vHm/WyO4b4mH2PEsy8PDw8Na82ZGps/j8u/WneHh4eBd4mz22DQXaRjl5EJuhGh4eHt6Gtxn55xHDpgdeFQY8PDy8a7xZ4zuLFdoWvA1T8PDw8D6Tl996exwhiXGL9/Hw8PA+jLcfoeXjrgNHB/Dw8PCO8mYHpzbxQR5DrEZueHh4eLem+cUf/jx0OIu5Pt/Dw8PDe8/7AakExTr87Q3wAAAAAElFTkSuQmCC'>
+        <a class='qrcode' rel="external nofollow noopener noreferrer" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3awU7DMBAEUP7/p+GKBLQzu3ZVoZdTlUSOn5FsM96Pj/j6/HG1b7b3vz/9+fvwhYeHh7fu+qxzOTLpz+P7SZ/x8PDwbvOS5vKuJMPXLj/D/uDh4eG9Ge+v5WHWZsLGw8PD+x+8pENJy48363h4eHjvxkvCiCQayO/M3ryYteDh4eHFvHyif5/fV8738PDw8Nan6vlhWFsKsFlmit7i4eHhXeBtDrFmscK+hToEwcPDw7vMa8PTPK5t49c84HjSTzw8PLyX8/INcVJekG+R89KBJ1/Hw8PDu8DLp+PNwVhbUJW8XyPx8PDw1ry262dLtfIj/3wjHh2A4eHh4S14p4qf2im7jXRnB2N4eHh4t3lttLoZjtki1EbGeHh4eDd4eTyaf34W2rbBbjToeHh4eNd4eQFBu4HOF4BZGPHkKR4eHt5LeKem6WTibr9Vb+Lx8PDwLvDywqk2yZgFtXmA22768fDw8E7xkkm/XSTyYKJ92pY+4OHh4d3gbZD5lJ2XZEWb4+D+gb8hHh4e3h/fzcOIWQFBspnOF4m6fTw8PLwLvLYQKsk22kKEdliHx2B4eHh4R3mbTXP+O986t4FynVLj4eHhHeLlr84ChXz5SXrVDigeHh7ePV4Ozgfi1BKy2Y7j4eHhneXtp+Z8mNoNdLuJ71MKPDw8vDPb6GTy3RyGJVFI3k5RdIWHh4d3lDcrdTq1VMxikahNPDw8vKO8z/Jqj6M2xa/tAvDLUzw8PLwLvNk50axIK48k2ti3xuDh4eEdLRc49Zl2ebgYSeDh4eFd420OnJIObYKJ9mAMDw8P7914s5h1tvy0xVhRSo2Hh4f3ct4mhtiUXs2CZjw8PLx7vFlx1eNoYHMk9njQ64UBDw8P7yhv9g9/MgPns3ReerVi4OHh4W15X6WO2k9F6Co/AAAAAElFTkSuQmCC'>
         
           <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
         
@@ -460,7 +472,7 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://SarkerAllen.github.io/2019/07/19/Java-List-Set-Map/&title=浅谈Java中的List、Set与Map集合 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=*浅谈Java中的List、Set与Map集合 * &lt;Excerpt in index | 首页摘要&gt;    Java中的List、Set与Map集合分析"
+          href="http://service.weibo.com/share/share.php?url=https://SarkerAllen.github.io/2019/07/20/java-generic/&title=Java中的泛型 | Kevin's Blog&pics=https://cdn.jsdelivr.net/gh/SarkerAllen/Source-material@master/head.jpg&summary=*浅谈Java中的泛型 * &lt;Excerpt in index | 首页摘要&gt;    Java中的泛型、泛型类、泛型方法"
           
           >
           
@@ -484,40 +496,21 @@
         
             <div class="prev-next">
                 
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/07/20/java-generic/" rel="prev" title="Java中的泛型">
-                                  
-                                      Java中的泛型
-                                  
+                                <a href="/2019/07/19/Java-List-Set-Map/" rel="prev" title="浅谈Java中的List、Set与Map集合">
+                                    
+                                        浅谈Java中的List、Set与Map集合
+                                    
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
                                     <a class="tag" href="/tags/java/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>java</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/07/18/Singleton/" rel="prev" title="设计模式——单例模式(浅谈)">
-                                    
-                                        设计模式——单例模式(浅谈)
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/singleton/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>singleton</a>
                                 </h6>
                             
                         </span>
@@ -560,7 +553,7 @@
 
   <script>
     window.subData = {
-      title: '浅谈Java中的List、Set与Map集合',
+      title: 'Java中的泛型',
       tools: true
     }
   </script>
@@ -640,7 +633,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#接口继承关系以及实现"><span class="toc-text">接口继承关系以及实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-text">List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList"><span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet"><span class="toc-text">TreeSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashSet"><span class="toc-text">LinkedHashSet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashTable"><span class="toc-text">HashTable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeMap"><span class="toc-text">TreeMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三者的区别"><span class="toc-text">三者的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List三个子类的区别"><span class="toc-text">List三个子类的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map三个子类的区别"><span class="toc-text">Map三个子类的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set两个子类的区别"><span class="toc-text">Set两个子类的区别</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型"><span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么使用泛型"><span class="toc-text">为什么使用泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#泛型-Generic-Type"><span class="toc-text">泛型(Generic Type)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是泛型"><span class="toc-text">什么是泛型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型类"><span class="toc-text">泛型类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型方法"><span class="toc-text">泛型方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#泛型的通配符、上限和下限"><span class="toc-text">泛型的通配符、上限和下限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#泛型的擦除和转换"><span class="toc-text">泛型的擦除和转换</span></a></li></ol></li></ol>
     </div>
   </section>
 
